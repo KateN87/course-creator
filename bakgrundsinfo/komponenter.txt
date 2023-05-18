@@ -1,0 +1,45 @@
+Screens
+
+Home:
+Komp - Header
+Rubrik All Courses
+Filter - Pressable för att få upp filtrering
+Komp Filter
+Komp - Main-ruta
+
+Course Detail:
+Preview Bild/video
+Levels och antal videos????
+Hjärta????
+Titel
+Course-content i listform
+Course-description - + högersvajp
+Komp Delmoment - pressable
+
+
+Komponenter
+Header:
+Titel - All courses
+Filter - Pressable för att få upp filtrering
+Header-bild
+Käck text - What will you learn today?
+Main-ruta:
+Komp course-card - pressable
+
+Course-card:
+bild
+Titel
+Vem som skapat????
+
+Filter:
+Category Filter
+X för att stänga ner
+Knappar för att välja olika Filter
+Apply-knapp - visar kurser med de valda filtrena
+
+DelmomentContainer- Pressable:
+Titel
+Done/not done
+Tid??
+onPress - lista på vad som gås igenom
+onLongPress - videon spelas upp

@@ -1,0 +1,15 @@
+Needed info in database
+
+course title - "Course 1 - This is a course"
+course content - ["Detta är en sak kursen handlar om", "Detta är en annan sak", "Detta är en tredje"]
+preview photo/video
+Hur många videos som finns????
+Levels????
+Taggar för filtrering - ["React", "Coding"]
+Course description - "Löpande text om vad kursen innehåller"
+Kursmoment - [{titel: blabla, tid: 15sek, video: 'https://video.com', färdig: true/false}]
+
+Kursmoment:
+Titel - "Detta är en titel för ett delmoment"
+Tid - 15 sek
+

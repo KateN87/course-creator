@@ -1,0 +1,2 @@
+1. Bilder - får inte till  det från dataobjektet
+2. scrollbar - text gömmer sig bakom
