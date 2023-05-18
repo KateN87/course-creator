@@ -14,18 +14,13 @@ export default courseData = [
         parts: [
             {
                 title: 'This is part 1',
-                videoURL: 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
-                done: false,
-            },
-            {
-                title: 'This is part 1',
                 contentList: [
                     'This part is about a thing',
                     'And about another thing',
                     'And about a third thing',
                 ],
                 videoURL: 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
-                done: false,
+                done: true,
             },
             {
                 title: 'This is part 2',

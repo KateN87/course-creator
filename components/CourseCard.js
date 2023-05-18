@@ -7,7 +7,7 @@ export default CourseCard = ({ item, navigation }) => {
         <TouchableOpacity
             onPress={() => navigation.navigate('Course Details', { item })}
         >
-            <View style={styles.container}>
+            <View style={globalStyles.container}>
                 <Image
                     source={require('../assets/react-js.jpg')}
                     style={styles.image}
@@ -21,16 +21,6 @@ export default CourseCard = ({ item, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-        shadowColor: '#000',
-        elevation: 10,
-        backgroundColor: 'white',
-        marginTop: 10,
-        marginHorizontal: 10,
-        borderWidth: 2,
-        borderColor: CustomColor.lightGrey,
-        padding: 10,
-    },
     image: {
         width: 300,
         height: 200,

@@ -1,4 +1,11 @@
-import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
+import {
+    Text,
+    View,
+    Image,
+    StyleSheet,
+    ScrollView,
+    Pressable,
+} from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import CustomColor from '../styles/Colors';
 import globalStyles from '../styles/globalStyles';
@@ -6,7 +13,7 @@ import globalStyles from '../styles/globalStyles';
 import ContentContainer from '../components/ContentContainer';
 import { useRef, useState } from 'react';
 
-export default CourseDetailsComp = ({ route }) => {
+export default CourseDetailsComp = ({ navigation, route }) => {
     const { item } = route.params;
     const scrollRef = useRef();
     const [showIcon, setShowIcon] = useState(false);
@@ -34,9 +41,15 @@ export default CourseDetailsComp = ({ route }) => {
             >
                 <View style={styles.innerContainer}>
                     <View style={styles.partstitleContainer}>
-                        <Text style={styles.smallBox}>
-                            {item.parts.length} videos
-                        </Text>
+                        <Pressable
+                            onPress={() =>
+                                navigation.navigate('Course Parts', { item })
+                            }
+                        >
+                            <Text style={styles.smallBox}>
+                                {item.parts.length} videos
+                            </Text>
+                        </Pressable>
                         <Text style={styles.title}>{item.title}</Text>
                     </View>
 
