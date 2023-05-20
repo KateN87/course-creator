@@ -1,10 +1,14 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import courseData from '../courseData';
+import { useContext } from 'react';
+/* import courseData from '../courseData'; */
 
 import StartContainer from '../components/StartContainer';
 import CourseCard from '../components/CourseCard';
+import { CourseContext } from '../context/CourseContext';
 
 const HomeScreen = ({ navigation }) => {
+    const { courseData } = useContext(CourseContext);
+
     return (
         <View style={styles.start}>
             <View>

@@ -3,10 +3,16 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import globalStyles from '../styles/globalStyles';
 import CustomColors from '../styles/Colors';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { CourseContext } from '../context/CourseContext';
 
-export default PartsContainer = ({ item }) => {
+export default PartsContainer = ({ item, id }) => {
     const [isActive, setIsActive] = useState(false);
+    const { dispatch } = useContext(CourseContext);
+
+    const doneHandler = () => {
+        console.log('HELLO');
+    };
     return (
         <Pressable onPress={() => setIsActive(!isActive)}>
             <View style={globalStyles.container}>
@@ -19,6 +25,7 @@ export default PartsContainer = ({ item }) => {
                                 ? CustomColors.accentPurple
                                 : CustomColors.lightGrey
                         }
+                        onPress={() => doneHandler(item)}
                     />
                     <Text style={globalStyles.checkText}>{item.title}</Text>
                 </View>

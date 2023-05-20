@@ -6,7 +6,7 @@ import HomeScreen from './screens/HomeScreen';
 import CourseDetailsScreen from './screens/CourseDetailsScreen';
 import CoursePartsScreen from './screens/CoursePartsScreen';
 import CustomColor from './styles/Colors';
-import { CourseProvider } from './context/CourseContext';
+import { CourseContextProvider } from './context/CourseContext';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,8 +24,9 @@ export default function App() {
             </Pressable>
         ),
     };
+
     return (
-        <CourseProvider>
+        <CourseContextProvider>
             <NavigationContainer>
                 <Stack.Navigator initialRouteName='All Courses'>
                     <Stack.Screen
@@ -45,6 +46,6 @@ export default function App() {
                     />
                 </Stack.Navigator>
             </NavigationContainer>
-        </CourseProvider>
+        </CourseContextProvider>
     );
 }
