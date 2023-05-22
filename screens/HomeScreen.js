@@ -1,14 +1,11 @@
-import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { useContext } from 'react';
-/* import courseData from '../courseData'; */
+import { FlatList, StyleSheet, View } from 'react-native';
 
 import StartContainer from '../components/StartContainer';
 import CourseCard from '../components/CourseCard';
-import { CourseContext } from '../context/CourseContext';
+import { useRoute } from '@react-navigation/native';
+import { useEffect } from 'react';
 
-const HomeScreen = ({ navigation }) => {
-    const { courseData } = useContext(CourseContext);
-
+const HomeScreen = ({ courses }) => {
     return (
         <View style={styles.start}>
             <View>
@@ -16,10 +13,8 @@ const HomeScreen = ({ navigation }) => {
             </View>
             <View style={styles.list}>
                 <FlatList
-                    data={courseData}
-                    renderItem={({ item }) => (
-                        <CourseCard item={item} navigation={navigation} />
-                    )}
+                    data={courses}
+                    renderItem={({ item }) => <CourseCard item={item} />}
                 />
             </View>
         </View>

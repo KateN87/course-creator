@@ -12,8 +12,12 @@ import globalStyles from '../styles/globalStyles';
 
 import ContentContainer from '../components/ContentContainer';
 import { useRef, useState } from 'react';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-export default CourseDetailsComp = ({ navigation, route }) => {
+export default CourseDetailsComp = () => {
+    const navigation = useNavigation();
+    const route = useRoute();
+
     const { item } = route.params;
     const scrollRef = useRef();
     const [showIcon, setShowIcon] = useState(false);
@@ -29,11 +33,9 @@ export default CourseDetailsComp = ({ navigation, route }) => {
 
     return (
         <View style={styles.container}>
-            <Image
-                source={require('../assets/react-js.jpg')}
-                style={styles.image}
-            />
-
+            <View style={styles.imageContainer}>
+                <Image source={{ uri: item.imageURL }} style={styles.image} />
+            </View>
             <ScrollView
                 ref={scrollRef}
                 stickyHeaderIndices={[2]}
@@ -96,18 +98,22 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         marginTop: 10,
+        marginHorizontal: 10,
         backgroundColor: 'white',
+    },
+    imageContainer: {
+        width: '100%',
+    },
+    image: {
+        height: 200,
+        margin: 5,
     },
     innerContainer: {
         flex: 1,
         margin: 20,
         padding: 8,
     },
-    image: {
-        width: 380,
-        height: 200,
-        margin: 5,
-    },
+
     partstitleContainer: {
         borderBottomWidth: 2,
         borderBottomColor: CustomColor.lightGrey,

@@ -3,12 +3,10 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import globalStyles from '../styles/globalStyles';
 import CustomColors from '../styles/Colors';
-import { useContext, useState } from 'react';
-import { CourseContext } from '../context/CourseContext';
+import { useState } from 'react';
 
 export default PartsContainer = ({ item, id }) => {
     const [isActive, setIsActive] = useState(false);
-    const { dispatch } = useContext(CourseContext);
 
     const doneHandler = () => {
         console.log('HELLO');
