@@ -6,9 +6,10 @@ import {
     StyleSheet,
     View,
 } from 'react-native';
-import { tagsList } from '../courseData';
 
 import CustomColor from '../styles/Colors';
+import { useContext } from 'react';
+import { CourseContext } from '../context/CourseContext';
 
 export default FilterComponent = ({
     pressHandler,
@@ -16,6 +17,8 @@ export default FilterComponent = ({
     setSelectedCourses,
     selectedCourses,
 }) => {
+    const { tags } = useContext(CourseContext);
+
     const MyCheckbox = ({ item }) => {
         const checked = selectedCourses.includes(item);
 
@@ -45,7 +48,7 @@ export default FilterComponent = ({
         <Modal visible={modalVisible}>
             <Text>Choose Filters</Text>
             <FlatList
-                data={tagsList}
+                data={tags}
                 renderItem={({ item }) => <MyCheckbox item={item} />}
             />
             <Pressable onPress={pressHandler}>

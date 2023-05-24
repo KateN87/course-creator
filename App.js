@@ -1,36 +1,19 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { Pressable, Text } from 'react-native';
+import { Pressable, Text, StyleSheet } from 'react-native';
 
 import HomeScreen from './screens/HomeScreen';
-import CourseDetailsScreen from './screens/CourseDetailsScreen';
-import CoursePartsScreen from './screens/CoursePartsScreen';
-import FilterComponent from './components/FilterComponent';
+
 import CustomColor from './styles/Colors';
-import courseData from './courseData';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import { CourseContextProvider } from './context/CourseContext';
+import DrawerNavigation from './routes/DrawerNavigation';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
-    const [courses, setCourses] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedCourses, setSelectedCourses] = useState([]);
-    const pressHandler = () => {
-        setModalVisible(false);
-    };
-
-    useEffect(() => {
-        let filteredCourses = [];
-        if (selectedCourses.length === 0) {
-            filteredCourses = courseData;
-        } else {
-            filteredCourses = courseData.filter((course) =>
-                course.tags.some((tag) => selectedCourses.includes(tag))
-            );
-        }
-        setCourses(filteredCourses);
-    }, [selectedCourses]);
 
     const headerStyle = {
         headerTitleAlign: 'center',
@@ -42,39 +25,47 @@ export default function App() {
     };
 
     return (
-        <NavigationContainer>
-            <FilterComponent
-                pressHandler={pressHandler}
-                modalVisible={modalVisible}
-                setCourses={setCourses}
-                selectedCourses={selectedCourses}
-                setSelectedCourses={setSelectedCourses}
-            />
-            <Stack.Navigator initialRouteName='All Courses'>
-                <Stack.Screen
-                    name='All Courses'
-                    options={() => ({
-                        ...headerStyle,
-                        headerRight: () => (
-                            <Pressable onPress={() => setModalVisible(true)}>
-                                <Text>Filter</Text>
-                            </Pressable>
-                        ),
-                    })}
-                >
-                    {(props) => <HomeScreen {...props} courses={courses} />}
-                </Stack.Screen>
-                <Stack.Screen
-                    name='Course Details'
-                    component={CourseDetailsScreen}
-                    options={headerStyle}
-                />
-                <Stack.Screen
-                    name='Course Parts'
-                    component={CoursePartsScreen}
-                    options={headerStyle}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <CourseContextProvider>
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName='All Courses'>
+                    <Stack.Screen
+                        name='Drawer'
+                        component={DrawerNavigation}
+                        options={headerStyle}
+                    />
+                    <Stack.Screen
+                        name='All Courses'
+                        options={() => ({
+                            ...headerStyle,
+                            headerRight: () => (
+                                <Pressable
+                                    onPress={() => setModalVisible(true)}
+                                >
+                                    <Text style={styles.filterText}>
+                                        Filter
+                                    </Text>
+                                </Pressable>
+                            ),
+                        })}
+                    >
+                        {(props) => (
+                            <HomeScreen
+                                {...props}
+                                modalVisible={modalVisible}
+                                setModalVisible={setModalVisible}
+                            />
+                        )}
+                    </Stack.Screen>
+                </Stack.Navigator>
+            </NavigationContainer>
+        </CourseContextProvider>
     );
 }
+
+const styles = StyleSheet.create({
+    filterText: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color: CustomColor.accentPurple,
+    },
+});

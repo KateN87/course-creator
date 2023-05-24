@@ -17,11 +17,9 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 export default CourseDetailsComp = () => {
     const navigation = useNavigation();
     const route = useRoute();
-
     const { item } = route.params;
     const scrollRef = useRef();
     const [showIcon, setShowIcon] = useState(false);
-
     const handleScroll = (event) => {
         const offsetY = event.nativeEvent.contentOffset.y;
         if (offsetY > 100) {

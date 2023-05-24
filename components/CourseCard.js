@@ -5,10 +5,16 @@ import { useNavigation } from '@react-navigation/native';
 
 export default CourseCard = ({ item }) => {
     const navigation = useNavigation();
-    console.log('Hello', item);
+
     return (
         <TouchableOpacity
-            onPress={() => navigation.navigate('Course Details', { item })}
+            onPress={() =>
+                navigation.navigate('Drawer', {
+                    screen: 'Course Details',
+                    title: 'Course Details',
+                    params: { item },
+                })
+            }
         >
             <View style={globalStyles.container}>
                 <Image source={{ uri: item.imageURL }} style={styles.image} />
