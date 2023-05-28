@@ -1,7 +1,7 @@
 export const tagsList = [
     'coding',
-    'React',
-    'Easy',
+    'react',
+    'easy',
     'database',
     'new',
     'node',

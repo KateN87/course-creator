@@ -1,6 +1,6 @@
 import { useLayoutEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Dimensions, FlatList, View } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import CourseDetailsScreen from '../screens/CourseDetailsScreen';

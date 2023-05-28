@@ -1,5 +1,4 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import CustomColor from '../styles/Colors';
 import globalStyles from '../styles/globalStyles';
 import { useNavigation } from '@react-navigation/native';
 

@@ -7,12 +7,12 @@ import {
     Pressable,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import CustomColor from '../styles/Colors';
-import globalStyles from '../styles/globalStyles';
-
-import ContentContainer from '../components/ContentContainer';
 import { useRef, useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
+
+import CustomColor from '../styles/Colors';
+import globalStyles from '../styles/globalStyles';
+import ContentContainer from '../components/ContentContainer';
 
 export default CourseDetailsComp = () => {
     const navigation = useNavigation();

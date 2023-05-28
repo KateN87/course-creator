@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { Pressable, Text, StyleSheet } from 'react-native';
-
-import HomeScreen from './screens/HomeScreen';
-
-import CustomColor from './styles/Colors';
+import { Ionicons } from '@expo/vector-icons';
 import { useState } from 'react';
 
+import HomeScreen from './screens/HomeScreen';
+import CustomColor from './styles/Colors';
 import { CourseContextProvider } from './context/CourseContext';
 import DrawerNavigation from './routes/DrawerNavigation';
+import AddCourseScreen from './screens/AddCourseScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,7 +35,7 @@ export default function App() {
                     />
                     <Stack.Screen
                         name='All Courses'
-                        options={() => ({
+                        options={({ navigation }) => ({
                             ...headerStyle,
                             headerRight: () => (
                                 <Pressable
@@ -44,6 +44,19 @@ export default function App() {
                                     <Text style={styles.filterText}>
                                         Filter
                                     </Text>
+                                </Pressable>
+                            ),
+                            headerLeft: () => (
+                                <Pressable
+                                    onPress={() =>
+                                        navigation.navigate('AddCourse')
+                                    }
+                                >
+                                    <Ionicons
+                                        name='md-add-circle-outline'
+                                        size={26}
+                                        color={CustomColor.accentPurple}
+                                    />
                                 </Pressable>
                             ),
                         })}
@@ -56,6 +69,14 @@ export default function App() {
                             />
                         )}
                     </Stack.Screen>
+                    <Stack.Screen
+                        name='AddCourse'
+                        component={AddCourseScreen}
+                        options={{
+                            ...headerStyle,
+                            title: 'Add Course',
+                        }}
+                    />
                 </Stack.Navigator>
             </NavigationContainer>
         </CourseContextProvider>

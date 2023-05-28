@@ -1,4 +1,4 @@
-import { Text, View, Image, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 
 import CustomColor from '../styles/Colors';
@@ -12,5 +12,3 @@ export default ContentContainer = ({ content }) => {
         </View>
     );
 };
-
-const styles = StyleSheet.create({});

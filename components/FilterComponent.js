@@ -5,11 +5,13 @@ import {
     FlatList,
     StyleSheet,
     View,
+    TouchableOpacity,
 } from 'react-native';
+import { useContext } from 'react';
 
 import CustomColor from '../styles/Colors';
-import { useContext } from 'react';
 import { CourseContext } from '../context/CourseContext';
+import globalStyles from '../styles/globalStyles';
 
 export default FilterComponent = ({
     pressHandler,
@@ -31,7 +33,7 @@ export default FilterComponent = ({
         };
 
         return (
-            <View>
+            <View style={styles.filterContainer}>
                 <Pressable
                     style={[
                         styles.checkboxBase,
@@ -39,21 +41,30 @@ export default FilterComponent = ({
                     ]}
                     onPress={checkHandler}
                 ></Pressable>
-                <Text>{item}</Text>
+                <Text style={[globalStyles.smallTitle, styles.text]}>
+                    {item}
+                </Text>
             </View>
         );
     };
 
     return (
         <Modal visible={modalVisible}>
-            <Text>Choose Filters</Text>
+            <Text style={[globalStyles.mediumTitle, styles.text]}>
+                Choose Filters
+            </Text>
             <FlatList
                 data={tags}
                 renderItem={({ item }) => <MyCheckbox item={item} />}
             />
-            <Pressable onPress={pressHandler}>
-                <Text>APPLY</Text>
-            </Pressable>
+            <TouchableOpacity
+                onPress={pressHandler}
+                style={globalStyles.buttonContainer}
+            >
+                <Text style={[globalStyles.buttonText, styles.buttonText]}>
+                    APPLY
+                </Text>
+            </TouchableOpacity>
         </Modal>
     );
 };
@@ -71,5 +82,16 @@ const styles = StyleSheet.create({
     },
     checkboxChecked: {
         backgroundColor: CustomColor.accentPurple,
+        borderColor: CustomColor.lightGrey,
+    },
+    filterContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingVertical: 10,
+        marginLeft: 10,
+    },
+    text: {
+        marginLeft: 10,
+        marginBottom: 10,
     },
 });

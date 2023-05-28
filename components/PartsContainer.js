@@ -9,10 +9,10 @@ import {
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import YoutubePlayer from 'react-native-youtube-iframe';
+import { useContext, useState } from 'react';
 
 import globalStyles from '../styles/globalStyles';
 import CustomColors from '../styles/Colors';
-import { useContext, useRef, useState } from 'react';
 import { CourseContext } from '../context/CourseContext';
 
 export default PartsContainer = ({ courseId, partId }) => {
@@ -40,7 +40,7 @@ export default PartsContainer = ({ courseId, partId }) => {
                     <YoutubePlayer
                         height={300}
                         play={true}
-                        videoId={'kt0bfw4YkFk' /* part.videoURL */}
+                        videoId={part.videoURL}
                         onChangeState={onStateChange}
                     />
                     <Pressable

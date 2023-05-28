@@ -26,10 +26,15 @@ const CourseContextProvider = ({ children }) => {
         });
     };
 
+    const addCourse = (course) => {
+        setAllCourses((prev) => [...prev, course]);
+    };
+
     const value = {
         allCourses,
         tags,
         partDone,
+        addCourse,
     };
 
     return (

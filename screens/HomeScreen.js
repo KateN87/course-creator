@@ -8,10 +8,9 @@ import FilterComponent from '../components/FilterComponent';
 
 const HomeScreen = ({ modalVisible, setModalVisible }) => {
     const { allCourses } = useContext(CourseContext);
-
     const [courses, setCourses] = useState([]);
-
     const [selectedCourses, setSelectedCourses] = useState([]);
+
     const pressHandler = () => {
         setModalVisible(false);
     };
@@ -26,7 +25,7 @@ const HomeScreen = ({ modalVisible, setModalVisible }) => {
             );
         }
         setCourses(filteredCourses);
-    }, [selectedCourses]);
+    }, [selectedCourses, allCourses]);
     return (
         <>
             <FilterComponent
