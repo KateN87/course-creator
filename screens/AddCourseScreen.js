@@ -22,7 +22,7 @@ export default AddCourseScreen = () => {
     const [parts, setParts] = useState([]);
     const [error, setError] = useState('');
 
-    const { allCourses, addCourse } = useContext(CourseContext);
+    const { allCourses, addCourse, tags, setTags } = useContext(CourseContext);
 
     const { control, handleSubmit, reset } = useForm();
 
@@ -36,7 +36,7 @@ export default AddCourseScreen = () => {
     };
 
     const saveMainHandler = (data) => {
-        const { cTitle, cList1, cList2, cList3, image, tagArr, description } =
+        const { cTitle, cList1, cList2, cList3, image, tagInp, description } =
             data;
         if (
             !cTitle ||
@@ -44,22 +44,30 @@ export default AddCourseScreen = () => {
             !cList2 ||
             !cList3 ||
             !image ||
-            !tagArr ||
+            !tagInp ||
             !description
         ) {
             return setError('All fields must be filled');
         }
+
         const contentArr = [cList1, cList2, cList3];
-        const tags = tagArr.split(', ').map((str) => str.trim().toLowerCase());
+        const tagInpArr = tagInp
+            .split(', ')
+            .map((str) => str.trim().toLowerCase());
+        const newTagArr = tagInpArr.map((tag) => {
+            if (!tags.includes(tag)) {
+                return tag;
+            }
+        });
         const newCourse = {
             key: allCourses.length + 1,
             title: cTitle,
             contentList: contentArr,
             imageURL: image,
-            tags,
+            tags: tagInpArr,
             description,
         };
-
+        setTags((prev) => [...prev, ...newTagArr]);
         setMainCourse(newCourse);
         setError('');
         setDone(true);
@@ -150,7 +158,7 @@ export default AddCourseScreen = () => {
                     <View style={styles.innerContainer}>
                         <Text style={globalStyles.smallTitle}>Tag</Text>
                         <CustomInput
-                            name='tagArr'
+                            name='tagInp'
                             placeholder='Tags'
                             control={control}
                         />

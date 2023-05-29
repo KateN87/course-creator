@@ -33,6 +33,7 @@ const CourseContextProvider = ({ children }) => {
     const value = {
         allCourses,
         tags,
+        setTags,
         partDone,
         addCourse,
     };

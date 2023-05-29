@@ -25,7 +25,6 @@ export default function CustomInput({
                     onBlur={onBlur}
                     placeholder={placeholder}
                     reset={reset}
-                    multiline={multiline}
                 />
             )}
         />
