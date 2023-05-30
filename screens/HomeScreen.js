@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, View } from 'react-native';
+import { Dimensions, FlatList, StyleSheet, View } from 'react-native';
 import { useContext, useState, useLayoutEffect } from 'react';
 
 import StartContainer from '../components/StartContainer';
@@ -27,7 +27,7 @@ const HomeScreen = ({ modalVisible, setModalVisible }) => {
         setCourses(filteredCourses);
     }, [selectedCourses, allCourses]);
     return (
-        <>
+        <View style={styles.mainContainer}>
             <FilterComponent
                 pressHandler={pressHandler}
                 modalVisible={modalVisible}
@@ -35,7 +35,7 @@ const HomeScreen = ({ modalVisible, setModalVisible }) => {
                 selectedCourses={selectedCourses}
                 setSelectedCourses={setSelectedCourses}
             />
-            <View style={styles.start}>
+            <View style={styles.testar}>
                 <View>
                     <StartContainer />
                 </View>
@@ -46,17 +46,18 @@ const HomeScreen = ({ modalVisible, setModalVisible }) => {
                     />
                 </View>
             </View>
-        </>
+        </View>
     );
 };
-
 const styles = StyleSheet.create({
-    start: {
+    mainContainer: {
+        flex: 1,
+    },
+    testar: {
         flex: 1,
     },
     list: {
         flex: 1,
-        alignItems: 'center',
     },
 });
 export default HomeScreen;

@@ -21,14 +21,15 @@ const styles = StyleSheet.create({
         marginTop: 10,
         borderBottomWidth: 2,
         borderBottomColor: CustomColor.lightGrey,
+        height: 200,
     },
     image: {
         width: 400,
-        height: 200,
+        height: 150,
     },
     text: {
-        fontSize: 22,
+        fontSize: 20,
         color: CustomColor.darkGrey,
-        margin: 10,
+        margin: 5,
     },
 });

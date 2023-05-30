@@ -252,6 +252,11 @@ export default courseData = [
             {
                 id: 1,
                 title: 'This is part 1',
+                contentList: [
+                    'This part is about a thing',
+                    'And about another thing',
+                    'And about a third thing',
+                ],
                 videoURL: 'NgayZAuTgwM',
                 done: false,
             },
