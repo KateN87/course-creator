@@ -10,7 +10,6 @@ export default CourseCard = ({ item }) => {
             onPress={() =>
                 navigation.navigate('Drawer', {
                     screen: 'Course Details',
-                    title: 'Course Details',
                     params: { item },
                 })
             }

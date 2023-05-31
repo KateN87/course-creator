@@ -54,11 +54,9 @@ export default AddCourseScreen = () => {
         const tagInpArr = tagInp
             .split(', ')
             .map((str) => str.trim().toLowerCase());
-        const newTagArr = tagInpArr.map((tag) => {
-            if (!tags.includes(tag)) {
-                return tag;
-            }
-        });
+
+        const newTagArr = tagInpArr.filter((tag) => !tags.includes(tag));
+        console.log(newTagArr);
         const newCourse = {
             key: allCourses.length + 1,
             title: cTitle,
